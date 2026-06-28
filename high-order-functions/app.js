@@ -4,15 +4,32 @@ https://next.json-generator.com/api/json/get/VkBw8XP2d
 Get the JSON data and perform some operations on the data.
 You must use high order functions such as: filter, map, reduce, forEach, etc…
 */
-
+fetch(`https://next.json-generator.com/api/json/get/VkBw8XP2d`)
+    .then(response => response.json())
+    .then(result => {
+        main(result);
+    })
 // 1. Find and print average salary of all employees who works in Georgia, Amazon company.
+function main(employees) {
+        // 1. Find and print average salary of all employees who works in Georgia, Amazon company.
+        let filteredSalaries = employees
+            .filter(e => e.country === 'Georgia' && e.company === 'Amazon')
+            .map(e => e.salary);
+        const sum = filteredSalaries.reduce((accum, next) => next + accum, 0);
+        console.log("1: "+Math.round(sum/filteredSalaries.length));
+
 
 // 2. Find and print list of the employees which work in Facebook IT department.
-
+        let filteredEmployees = employees
+            .filter(e=>e.company==='facebook' && e.department === 'IT')
+            .map(e=>e.name);
+        console.log("2: "+filteredEmployees);
 // 3. Find and print boolean value if there exists employees which works in India HR department and whose salary is above 500 000
-
+        let bool3 = employees
+            .some(e=>e.country === 'India' && e.department === 'HR' && e.salary>500000);
+        console.log("3: "+bool3);
 // 4. Get and print a list of employees with only email, firstname and dob of the employees which work in Google UK Sales department.
-
+        
 // 5. Find and print an employee which has highest salary among those employees which work in either Google or Apple and are born after 1980.
 
 // 6. Find an average age of all employees and compare if to average age of Google employees. Print "1" if average age of all employees is smaller, otherwise print "2".
