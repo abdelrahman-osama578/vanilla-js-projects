@@ -129,7 +129,11 @@ function main(employees) {
     
         
 // 5. Find and print an employee which has highest salary among those employees which work in either Google or Apple and are born after 1980.
-
+    let highestEmployeeSalary = employees[0];
+    let list5 = employees
+      .filter(e=> e.dob>'1979-12-31' && (e.company==='Google' || e.company === 'Apple'))
+      .forEach(e=> {if(e.salary>highestEmployeeSalary.salary) highestEmployeeSalary = e;})
+    console.log("5: ",highestEmployeeSalary)
 // 6. Find an average age of all employees and compare if to average age of Google employees. Print "1" if average age of all employees is smaller, otherwise print "2".
 
 // 7. Sort and print employees in alphabetical order by firstname
