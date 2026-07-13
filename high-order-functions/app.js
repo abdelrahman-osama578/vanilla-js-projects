@@ -135,6 +135,22 @@ function main(employees) {
       .forEach(e=> {if(e.salary>highestEmployeeSalary.salary) highestEmployeeSalary = e;})
     console.log("5: ",highestEmployeeSalary)
 // 6. Find an average age of all employees and compare if to average age of Google employees. Print "1" if average age of all employees is smaller, otherwise print "2".
+    let sumAllAges = employees
+        .map(e => 2021 - new Date(e.dob).getFullYear())
+        .reduce((acc,age)=>acc+age,0);
+
+    let list6 = employees
+        .filter((e)=>e.company==='Google')
+        .map(e => 2021 - new Date(e.dob).getFullYear())
+
+    let sumAllAgesGoogle = list6
+        .reduce((acc,cur)=>acc+cur,0)
+    
+    let avg6_1 = sumAllAges/employees.length
+    let avg6_2 = sumAllAgesGoogle/ list6.length
+    console.log("6: ")
+    avg6_1>avg6_2?console.log(2):console.log(1);
+
 
 // 7. Sort and print employees in alphabetical order by firstname
 
