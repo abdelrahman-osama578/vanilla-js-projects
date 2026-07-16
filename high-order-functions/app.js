@@ -153,6 +153,13 @@ function main(employees) {
 
 
 // 7. Sort and print employees in alphabetical order by firstname
+    let list7 = employees.sort((a,b)=>{
+        if(a.name.first>b.name.first) return 1;
+        if(a.name.first===b.name.first) return 0;
+        return -1;
+    })
+    console.log("7: ",list7)
+
 
 // 8. Check if there exists and employee in Google which has salary over 600 000 and is born after 1990.
 
