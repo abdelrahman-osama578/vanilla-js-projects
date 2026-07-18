@@ -162,8 +162,16 @@ function main(employees) {
 
 
 // 8. Check if there exists and employee in Google which has salary over 600 000 and is born after 1990.
-
+    let list8 = employees.some((e)=>e.salary>600000 && e.dob>='1990-1-1');
+    console.log("8: ",list8)
 // 9. Find and print sum of salaries of the users which work in USA Apple.
-
+    let sum9 = employees
+        .filter((e)=> e.country==='USA' && e.company==='Apple')
+        .map((e)=>e.salary)
+        .reduce((acc,s)=>acc+s,0);
+    console.log("9: ",sum9)
 // 10. Find and print list of all employees, which has birth hours in between 00:00AM and 12:00PM
+    let list10 = employees
+        .filter(e=> new Date(e.dob).getUTCHours()<12);
+    console.log("10: ",list10)
 }
